@@ -10,8 +10,8 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @Configuration
 public class AmazonConfiguration {
 
-	private static final String ACCESS_KEY = "AKIA4N252FBCZENQ4L7F";
-	private static final String SECRET_KEY = "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";
+	private static final String ACCESS_KEY = "coloca a chave";
+	private static final String SECRET_KEY = "chave secreta";
 	private static final String REGION = "us-east-1";
 
 	@Bean
