@@ -1,0 +1,23 @@
+@Component
+public class FileSaver {
+
+	
+	@Autowired
+	private AmazonS3 amazonS3;
+	private static final String NOME_BUCKET ="casadocodigo-henriquemarques" ;
+	private static final String URL_BUCKET ="http://s3.amazonws.com/";
+
+	public String write(MultipartFile file) {
+		try {
+			
+			amazonS3.putObject(new PutObjectRequest(NOME_BUCKET, file.getOriginalFilename(), file.getInputStream(), null)
+					.withCannedAcl(CannedAccessControlList.PublicRead));
+			
+			return URL_BUCKET.concat(NOME_BUCKET).concat("/").concat(file.getOriginalFilename());
+			
+		} catch (IllegalStateException | IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+}
